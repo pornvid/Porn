@@ -3,77 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Collection</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>My Video Collection</h1>
-    </header>
-
-    <main>
-        <section id="video-list">
-            <!-- Video links will be added dynamically here -->
-        </section>
-
-        <section id="add-video">
-            <h2>Add a New Video</h2>
-            <form id="videoForm">
-                <input type="text" id="videoTitle" placeholder="Video Title" required>
-                <input type="url" id="videoURL" placeholder="Video URL" required>
-                <button type="submit">Add Video</button>
-            </form>
-        </section>
-    </main>
-
-    <!-- JavaScript langsung di sini -->
-    <script>
-        const videoList = document.getElementById('video-list');
-        const videoForm = document.getElementById('videoForm');
-        const videoTitle = document.getElementById('videoTitle');
-        const videoURL = document.getElementById('videoURL');
-
-        // Function to add video to the list
-        function addVideo(title, url) {
-            const videoContainer = document.createElement('div');
-            const videoFrame = document.createElement('iframe');
-            videoFrame.src = url;
-            videoFrame.title = title;
-            videoFrame.allowFullscreen = true;
-
-            const videoCaption = document.createElement('p');
-            videoCaption.textContent = title;
-
-            videoContainer.appendChild(videoFrame);
-            videoContainer.appendChild(videoCaption);
-
-            videoList.appendChild(videoContainer);
+    <title>Video Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        // Handle form submission
-        videoForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const title = videoTitle.value;
-            const url = videoURL.value;
-            
-            if (title && url) {
-                addVideo(title, url);
-                videoTitle.value = '';
-                videoURL.value = '';
-            }
-        });
-    </script>
-<div class="video-container">
-        <!-- Video Kiri -->
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-item {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-item iframe {
+            border-radius: 10px;
+            width: 100%;
+            height: 200px;
+        }
+
+        .video-item p {
+            margin-top: 10px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Video Gallery</h1>
+    </header>
+
+    <main class="video-gallery">
         <div class="video-item">
-            <h2>Video Kiri</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ID_VIDEO_1" title="Video Kiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ID_VIDEO_1" title="Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Video 1 Description</p>
         </div>
 
-        <!-- Video Kanan -->
         <div class="video-item">
-            <h2>Video Kanan</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ID_VIDEO_2" title="Video Kanan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ID_VIDEO_2" title="Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Video 2 Description</p>
         </div>
-    </body>
+
+        <div class="video-item">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ID_VIDEO_3" title="Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Video 3 Description</p>
+        </div>
+
+        <div class="video-item">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ID_VIDEO_4" title="Video 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Video 4 Description</p>
+        </div>
+    </main>
+
+</body>
 </html>
