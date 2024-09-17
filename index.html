@@ -3,24 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
+    <title>Video Collection</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to My GitHub Pages Website</h1>
-    <p>This is a simple website hosted on GitHub Pages.</p>
+    <header>
+        <h1>My Video Collection</h1>
+    </header>
+
+    <main>
+        <section id="video-list">
+            <!-- Video links will be added dynamically here -->
+        </section>
+
+        <section id="add-video">
+            <h2>Add a New Video</h2>
+            <form id="videoForm">
+                <input type="text" id="videoTitle" placeholder="Video Title" required>
+                <input type="url" id="videoURL" placeholder="Video URL" required>
+                <button type="submit">Add Video</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- JavaScript langsung di sini -->
+    <script>
+        const videoList = document.getElementById('video-list');
+        const videoForm = document.getElementById('videoForm');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoURL = document.getElementById('videoURL');
+
+        // Function to add video to the list
+        function addVideo(title, url) {
+            const videoContainer = document.createElement('div');
+            const videoFrame = document.createElement('iframe');
+            videoFrame.src = url;
+            videoFrame.title = title;
+            videoFrame.allowFullscreen = true;
+
+            const videoCaption = document.createElement('p');
+            videoCaption.textContent = title;
+
+            videoContainer.appendChild(videoFrame);
+            videoContainer.appendChild(videoCaption);
+
+            videoList.appendChild(videoContainer);
+        }
+
+        // Handle form submission
+        videoForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = videoTitle.value;
+            const url = videoURL.value;
+            
+            if (title && url) {
+                addVideo(title, url);
+                videoTitle.value = '';
+                videoURL.value = '';
+            }
+        });
+    </script>
 </body>
 </html>
