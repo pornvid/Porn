@@ -5,3 +5,7 @@
 sex
 hotsex
 hot
+#animexxx
+#18xxx
+#adult
+#adultxxx
