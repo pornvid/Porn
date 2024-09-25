@@ -15,7 +15,6 @@
     <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.6.8/dist/videojs-contrib-ads.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.10.1/dist/videojs.ima.min.js"></script>
     
-    <!-- CSS untuk styling blog -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,14 +60,17 @@
     <section>
         <h2>Featured Video with Ads</h2>
 
-        <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VrP_DEn0iYV9t5TkH5qYpqiYfp9xW2FxMFmRYFgy4LHR2eSZ9rsHEU8&s=10" data-setup="{}">
+        <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="https://via.placeholder.com/640x360" data-setup="{}">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
         </video>
 
         <script>
             var player = videojs('my-video');
-            player.ima({
-                adTagUrl: 'https://s.magsrv.com/v1/vast.php?idzone=5428642'
+
+            player.ready(function() {
+                player.ima({
+                    adTagUrl: 'https://s.magsrv.com/v1/vast.php?idzone=5428642' // URL VAST untuk iklan
+                });
             });
         </script>
     </section>
