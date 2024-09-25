@@ -3,25 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JWPlayer with VAST Ads</title>
-    <script src="https://cdn.jwplayer.com/libraries/your-jwplayer-key.js"></script>
+    <title>My Blog with VAST Ads</title>
+    
+    <!-- Video.js Styles -->
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+    
+    <!-- Video.js JavaScript -->
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+    
+    <!-- Plugin untuk VAST Ads -->
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.6.8/dist/videojs-contrib-ads.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.10.1/dist/videojs.ima.min.js"></script>
+    
+    <!-- CSS untuk styling blog -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
 
-    <div id="my-video"></div>
+    <header>
+        <h1>Welcome to My Blog</h1>
+    </header>
 
-    <script>
-        jwplayer("my-video").setup({
-            file: "https://www.example.com/my-video.mp4",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-6nS20MAaLyEgFlMm5uS4AaN2fVdGw-9cVnc_4Zi8goF6ho_FLoc2CQC&s=10",
-            advertising: {
-                client: "vast",
-                tag: "https://s.magsrv.com/v1/vast.php?idzone=5428642" // URL VAST kamu
-            },
-            width: "640",
-            height: "360"
-        });
-    </script>
+    <section>
+        <h2>Featured Video with Ads</h2>
+
+        <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="https://example.com/poster.jpg" data-setup="{}">
+            <source src="https://www.example.com/my-video.mp4" type="video/mp4">
+        </video>
+
+        <script>
+            var player = videojs('my-video');
+            player.ima({
+                adTagUrl: 'https://s.magsrv.com/v1/vast.php?idzone=5428642' // URL VAST untuk iklan
+            });
+        </script>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Blog</p>
+    </footer>
 
 </body>
 </html>
